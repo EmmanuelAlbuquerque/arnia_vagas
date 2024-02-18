@@ -22,6 +22,7 @@ for ($i = 0; $i < 4; $i++) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css" integrity="sha512-dUOcWaHA4sUKJgO7lxAQ0ugZiWjiDraYNeNJeRKGOIpEq4vroj1DpKcS3jP0K4Js4v6bXk31AAxAxaYt3Oi9xw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Ania Vagas</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -52,14 +53,17 @@ for ($i = 0; $i < 4; $i++) {
                     <div class="row d-flex justify-content-between">
                         <div class="col-sm-4">
                             <label>O quê você procura?</label>
-                            <input class=" form-control mb-3 tamanho" type="text" name="linguagem" id="" placeholder="Linguagem">
+                            <i class="ri-search-2-line iconPesquisa"></i>
+                            <input class=" form-control mb-3 tamanho ph" type="text" name="linguagem" id="" placeholder="Linguagem">
+
                             <?php if (isset($_POST['linguagem'])) : ?>
                                 <span class=" btn mb-4 resultado border-white "><?php echo $_POST['linguagem'] ?></span>
                             <?php endif; ?>
                         </div>
                         <div class="col-sm-4">
                             <label>Onde?</label>
-                            <input class="form-control tamanho " type="text" name="localizacao" id="" placeholder="Localização">
+                            <i class="ri-map-pin-line iconLocaliza"></i>
+                            <input class="form-control tamanho ph" type="text" name="localizacao" id="" placeholder="Localização">
                         </div>
                         <!-- mt-4 w-25 h-25 -->
                         <button class=" btn botao mt-4 botaoBusca ">Buscar Vagas</button>
@@ -132,9 +136,18 @@ for ($i = 0; $i < 4; $i++) {
                                         </div>
 
                                         <div class="infoVagaCard">
-                                            <div><?php echo  $vagaItem->salario; ?></div>
-                                            <div><?php echo  $vagaItem->localizacao; ?></div>
-                                            <div><?php echo  $vagaItem->tipoVaga; ?></div>
+                                            <div>
+                                                <i class="ri-money-dollar-circle-line iconFinan"></i>
+                                                <?php echo  $vagaItem->salario; ?>
+                                            </div>
+                                            <div>
+                                                <i class="ri-map-pin-line iconMap"></i>
+                                                <?php echo  $vagaItem->localizacao; ?>
+                                            </div>
+                                            <div>
+                                                <i class="ri-computer-line iconDevice"></i>
+                                                <?php echo  $vagaItem->tipoVaga; ?>
+                                            </div>
                                         </div>
                                         <div class="textVagaCard"><?php echo  $vagaItem->descricao; ?></div>
                                         <div><span class="detalhesVaga">Ver mais detalhes> </span></div>
@@ -156,17 +169,20 @@ for ($i = 0; $i < 4; $i++) {
                 </div>
                 <div class="col-sm-4 info">
                     <!-- info -->
-                    <h6 style="color:#FBB04D">Contato e Endereço</h6>
-                    <p>
-                        <i class="bi bi-phone"></i>
-                        4003-5442
-                    </p>
-                    <p><i class="bi bi-envelope-at-fill"></i>contato@arnia.com.br</p>
-                    <p>
-                        <i class="bi bi-geo-alt"></i>
-                        Av. do Contorno, 2905 Santa Efigênia, Belo Horizonte - MG,
-                        30110-080
-                    </p>
+                    <h6 class="colortitle">Contato e Endereço</h6>
+                    <div class="divPai">
+                        <div class="opatest"><i class="ri-phone-line iconContatos "></i></div>
+                        <p class="textContatos">4003-5442</p>
+                    </div>
+                    <div class="divPai">
+                        <div class="opatest"><i class="ri-mail-line iconContatos"></i></div>
+                        <p class="textContatos">contato@arnia.com.br</p>
+                    </div>
+                    <div class="divPai">
+                        <div class="opatest2"><i class="ri-map-pin-line iconContatos"></i></div>
+                        <p class="textContatos">Av. do Contorno, 2905 Santa Efigênia, Belo Horizonte - MG,
+                            30110-080</p>
+                    </div>
                 </div>
                 <div class="col-sm-4">
                     <button class="btn text-light border border-white">

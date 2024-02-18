@@ -131,6 +131,7 @@ p {
 label {
 	color: #ffffff;
 }
+
 .escrever {
 	width: 450px;
 }
@@ -285,4 +286,72 @@ label {
 .tamanho {
 	width: 455px;
 	height: 56px;
+}
+.iconPesquisa {
+	width: 24px;
+	height: 24px;
+	color: #4a4a68;
+	position: absolute;
+	left: 10%;
+	top: 21%;
+	font-size: 30px;
+}
+.ph {
+	padding-left: 50px;
+}
+.iconLocaliza {
+	width: 24px;
+	height: 24px;
+	color: #4a4a68;
+	position: absolute;
+	left: 46%;
+	top: 21%;
+	font-size: 30px;
+}
+.iconFinan {
+	color: #fbb04d;
+	width: 13.33px;
+	height: 13.33px;
+}
+.iconMap {
+	color: #fbb04d;
+	width: 13.33px;
+	height: 13.33px;
+}
+.iconDevice {
+	color: #fbb04d;
+	width: 13.33px;
+	height: 13.33px;
+}
+.iconContatos {
+	padding-left: 4px;
+	width: 16px;
+	height: 16px;
+}
+.textContatos {
+	color: #ffffff;
+	padding-left: 10px;
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 30.08px;
+}
+.colortitle {
+	color: #fbb04d;
+}
+.divPai {
+	display: flex;
+}
+.opatest {
+	width: 24px;
+	height: 24px;
+	border-radius: 10px;
+	background-color: #fbb04d;
+}
+.opatest2 {
+	padding-left: 2px;
+	width: 44px;
+	height: 24px;
+	border-radius: 10px;
+	background-color: #fbb04d;
 }
