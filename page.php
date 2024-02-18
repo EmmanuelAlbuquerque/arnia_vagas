@@ -8,7 +8,7 @@ $nExperiencia = ['Junior', 'Pleno', 'Sênior'];
 
 $vagas = array();
 for ($i = 0; $i < 4; $i++) {
-    $vagas[] = new VAGAS("Desenvolvedor de Sistemas Pleno", "Empresa: iZap Softworks", "InfoJobs 04 ago", "PHP", "Faixa salarial: R$ 4.000,00", "Localização: Belo Horizonte", "Tipo de vaga: Home office", "Oferecemos um ambiente em que todos são protagonistas e agentes de transformação. Temos um excelente clima organizacional com pessoas engajadas em entregar os melhores resultados, assim como grandes oportunidades...");
+    $vagas[] = new VAGAS("Desenvolvedor de Sistemas Pleno", "Empresa: iZap Softworks", "InfoJobs 04 ago", "PHP", "Phyton", "React", "Faixa salarial: R$ 4.000,00", "Localização: Belo Horizonte", "Tipo de vaga: Home office", "Oferecemos um ambiente em que todos são protagonistas e agentes de transformação. Temos um excelente clima organizacional com pessoas engajadas em entregar os melhores resultados, assim como grandes oportunidades...");
 }
 ?>
 
@@ -22,7 +22,7 @@ for ($i = 0; $i < 4; $i++) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>Ania Vagas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -125,7 +125,12 @@ for ($i = 0; $i < 4; $i++) {
                                     </div>
                                     <div class="subTituloCard"><?php echo $vagaItem->subTitulo; ?></div>
                                     <div class="card-body">
-                                        <div class=" linguagemCard"><span><?php echo  $vagaItem->linguaguem; ?></span></div>
+                                        <div class=" d-flex align-items-center  ">
+                                            <div class=" m-2 linguagemCard"><span><?php echo  $vagaItem->linguaguem1; ?></span></div>
+                                            <div class=" m-2 linguagemCard"><span><?php echo  $vagaItem->linguaguem2; ?></span></div>
+                                            <div class=" m-2 linguagemCard"><span><?php echo  $vagaItem->linguaguem3; ?></span></div>
+                                        </div>
+
                                         <div class="infoVagaCard">
                                             <div><?php echo  $vagaItem->salario; ?></div>
                                             <div><?php echo  $vagaItem->localizacao; ?></div>
