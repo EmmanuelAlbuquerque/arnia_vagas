@@ -7,8 +7,8 @@ $tamanho = ['Pequena', 'Media', 'Grande'];
 $nExperiencia = ['Junior', 'Pleno', 'Sênior'];
 
 $vagas = array();
-for ($i = 0; $i < 5; $i++) {
-    $vagas[] = new VAGAS("Desenvolvedor de Sistemas Pleno", "PHP", 2000, "SobraL", "Remoto", "Oferecemos um ambiente em que todos são protagonistas e agentes de transformação. Temos um excelente clima organizacional com pessoas engajadas em entregar os melhores resultados, assim como grandes oportunidades...");
+for ($i = 0; $i < 4; $i++) {
+    $vagas[] = new VAGAS("Desenvolvedor de Sistemas Pleno", "Empresa: iZap Softworks", "InfoJobs 04 ago", "PHP", "Faixa salarial: R$ 4.000,00", "Localização: Belo Horizonte", "Tipo de vaga: Home office", "Oferecemos um ambiente em que todos são protagonistas e agentes de transformação. Temos um excelente clima organizacional com pessoas engajadas em entregar os melhores resultados, assim como grandes oportunidades...");
 }
 ?>
 
@@ -34,7 +34,7 @@ for ($i = 0; $i < 5; $i++) {
                     <!-- LOGO E BOTÃO -->
                     <img class=" col-6" src="./src/img/Logotipo.png" alt="logo">
                     <div class="col-3 ">
-                        <button class="btn botao">
+                        <button class="btn botaoGet botao">
                             <?php if (isset($_GET['nome'])) {
                                 $nome = $_GET['nome'];
                                 echo "Bem-vindo $nome!";
@@ -43,26 +43,29 @@ for ($i = 0; $i < 5; $i++) {
                             } ?>
                         </button>
                     </div>
-                    <hr class="border  border-1 linha ">
+                    <hr class="border  border-1 mt-2 linha ">
                 </div>
 
                 <!-- FORMULARIO DE PESQUISA -->
 
-                <form class="row d-flex" method="post">
-                    <div class="col-sm-4">
-                        <label>O quê você procura?</label>
-                        <input class=" form-control mb-3 " type="text" name="linguagem" id="" placeholder="Linguagem">
-                        <?php if (isset($_POST['linguagem'])) : ?>
-                            <span class=" btn mb-4 resultado border-white "><?php echo $_POST['linguagem'] ?></span>
-                        <?php endif; ?>
+                <form method="post">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-sm-4">
+                            <label>O quê você procura?</label>
+                            <input class=" form-control mb-3 tamanho" type="text" name="linguagem" id="" placeholder="Linguagem">
+                            <?php if (isset($_POST['linguagem'])) : ?>
+                                <span class=" btn mb-4 resultado border-white "><?php echo $_POST['linguagem'] ?></span>
+                            <?php endif; ?>
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Onde?</label>
+                            <input class="form-control tamanho " type="text" name="localizacao" id="" placeholder="Localização">
+                        </div>
+                        <!-- mt-4 w-25 h-25 -->
+                        <button class=" btn botao mt-4 botaoBusca ">Buscar Vagas</button>
+
                     </div>
-                    <div class="col-sm-4">
-                        <label>Onde?</label>
-                        <input class="form-control " type="text" name="localizacao" id="" placeholder="Localização">
-                    </div>
-                    <div class="col-sm-4">
-                        <button class=" btn botao mt-4 ">Buscar Vagas</button>
-                    </div>
+
                 </form>
             </div>
         </div>
@@ -74,7 +77,7 @@ for ($i = 0; $i < 5; $i++) {
                     <span class="textVagas">Vagas em React</span>
                     <p class="subText">225 vagas encontradas</p>
                 </div>
-                <div class="rounded-4 border border-1">
+                <div class="rounded-4 border filtro ">
                     <div class="m-3">
                         <span class="titulo">Filtre sua busca</span>
                         <h6 class="titulosCheckbox">Tecnologias</h6>
@@ -82,29 +85,29 @@ for ($i = 0; $i < 5; $i++) {
                             echo "<input class='textCheckbox' type='checkbox' name='$tecnologia'> $tecnologia <br>";
                         }
                         ?>
-                        <h6 class="titulos">Tipo de vaga</h6>
+                        <h6 class="titulosCheckbox">Tipo de vaga</h6>
                         <?php foreach ($tVagas as $vagaTipo) {
                             echo "<input class='textCheckbox' type='checkbox' name='$vagaTipo'> $vagaTipo <br>";
                         }
                         ?>
-                        <h6 class="titulos">Regime de trabalho</h6>
+                        <h6 class="titulosCheckbox">Regime de trabalho</h6>
                         <?php foreach ($rTrabalho as $trabalho) {
                             echo "<input class='textCheckbox' type='checkbox' name='$trabalho'> $trabalho <br>";
                         }
                         ?>
-                        <h6 class="titulos">Tamanho da empresa</h6>
+                        <h6 class="titulosCheckbox">Tamanho da empresa</h6>
                         <?php foreach ($tamanho as $tamanho) {
                             echo "<input class='textCheckbox' type='checkbox' name='$tamanho'> $tamanho <br>";
                         }
                         ?>
-                        <h6 class="titulos">Nível de experiência</h6>
+                        <h6 class="titulosCheckbox">Nível de experiência</h6>
                         <?php foreach ($nExperiencia as $experiencia) {
                             echo "<input class='textCheckbox' type='checkbox' name='$experiencia'> $experiencia <br>";
                         }
                         ?>
                     </div>
                     <div>
-                        <button class="btn botao alto">Filtrar</button>
+                        <button class="btn m-3 botao botaoFiltra">Filtrar</button>
                     </div>
                 </div>
             </div>
@@ -113,18 +116,27 @@ for ($i = 0; $i < 5; $i++) {
                 <div class="row">
                     <?php $i = 1;
                     foreach ($vagas as $vagaItem) { ?>
-                        <div class="col-sm-4 d-flex col-12 mb-4">
-                            <div class="card cartao">
-                                <div class="card-title"><?php echo $vagaItem->titulo; ?></div>
-                                <div class="card-body">
-                                    <div class="col-sm-12"><?php echo  $vagaItem->linguaguem; ?></div>
-                                    <div class="col-sm-12"><?php echo  $vagaItem->salario; ?></div>
-                                    <div class="col-sm-12"><?php echo  $vagaItem->localizacao; ?></div>
-                                    <div class="col-sm-12"><?php echo  $vagaItem->tipoVaga; ?></div>
-                                    <div class="col-sm-12"><?php echo  $vagaItem->descricao; ?></div>
+                        <section>
+                            <div class="col-sm-4 d-flex col-12 mb-4 infoCard">
+                                <div class="informacao border ">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="card-title titutoCard"><?php echo $vagaItem->titulo; ?></div>
+                                        <div class="dataCard"><?php echo $vagaItem->data; ?></div>
+                                    </div>
+                                    <div class="subTituloCard"><?php echo $vagaItem->subTitulo; ?></div>
+                                    <div class="card-body">
+                                        <div class=" linguagemCard"><span><?php echo  $vagaItem->linguaguem; ?></span></div>
+                                        <div class="infoVagaCard">
+                                            <div><?php echo  $vagaItem->salario; ?></div>
+                                            <div><?php echo  $vagaItem->localizacao; ?></div>
+                                            <div><?php echo  $vagaItem->tipoVaga; ?></div>
+                                        </div>
+                                        <div class="textVagaCard"><?php echo  $vagaItem->descricao; ?></div>
+                                        <div><span class="detalhesVaga">Ver mais detalhes> </span></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </section>
                     <?php $i++;
                     } ?>
                 </div>

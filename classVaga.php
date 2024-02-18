@@ -3,15 +3,19 @@
 class VAGAS
 {
     public $titulo;
+    public $subTitulo;
+    public $data;
     public $linguaguem;
     public $salario;
     public $localizacao;
     public $tipoVaga;
     public $descricao;
 
-    public function __construct($titulo, $linguaguem, $salario, $localizacao, $tipoVaga, $descricao)
+    public function __construct($titulo, $subTitulo, $data, $linguaguem, $salario, $localizacao, $tipoVaga, $descricao)
     {
         $this->titulo = $titulo;
+        $this->subTitulo = $subTitulo;
+        $this->data = $data;
         $this->linguaguem = $linguaguem;
         $this->salario = $salario;
         $this->localizacao = $localizacao;
