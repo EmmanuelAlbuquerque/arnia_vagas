@@ -29,7 +29,7 @@ for ($i = 0; $i < 4; $i++) {
 
 <body>
     <header>
-        <div class="color">
+        <div class="corHeader">
             <div class="container ">
                 <div class="row d-flex justify-content-between header">
                     <!-- LOGO E BOTÃO -->
@@ -44,7 +44,7 @@ for ($i = 0; $i < 4; $i++) {
                             } ?>
                         </button>
                     </div>
-                    <hr class="border  border-1 mt-2 linha ">
+                    <hr class=" border-3 mt-2 corLinha ">
                 </div>
 
                 <!-- FORMULARIO DE PESQUISA -->
@@ -54,16 +54,16 @@ for ($i = 0; $i < 4; $i++) {
                         <div class="col-sm-4">
                             <label>O quê você procura?</label>
                             <i class="ri-search-2-line iconPesquisa"></i>
-                            <input class=" form-control mb-3 tamanho ph" type="text" name="linguagem" id="" placeholder="Linguagem">
+                            <input class=" form-control mb-3 tamanhoInput distancia" type="text" name="linguagem" id="" placeholder="Linguagem">
 
                             <?php if (isset($_POST['linguagem'])) : ?>
-                                <span class=" btn mb-4 resultado border-white "><?php echo $_POST['linguagem'] ?></span>
+                                <span class=" btn mb-4 resultadoInput border-white "><?php echo $_POST['linguagem'] ?></span>
                             <?php endif; ?>
                         </div>
                         <div class="col-sm-4">
                             <label>Onde?</label>
                             <i class="ri-map-pin-line iconLocaliza"></i>
-                            <input class="form-control tamanho ph" type="text" name="localizacao" id="" placeholder="Localização">
+                            <input class="form-control tamanhoInput distancia" type="text" name="localizacao" id="" placeholder="Localização">
                         </div>
                         <!-- mt-4 w-25 h-25 -->
                         <button class=" btn botao mt-4 botaoBusca ">Buscar Vagas</button>
@@ -81,14 +81,20 @@ for ($i = 0; $i < 4; $i++) {
                     <span class="textVagas">Vagas em React</span>
                     <p class="subText">225 vagas encontradas</p>
                 </div>
-                <div class="rounded-4 border filtro ">
-                    <div class="m-3">
-                        <span class="titulo">Filtre sua busca</span>
-                        <h6 class="titulosCheckbox">Tecnologias</h6>
-                        <?php foreach ($tecnologias as $tecnologia) {
-                            echo "<input class='textCheckbox' type='checkbox' name='$tecnologia'> $tecnologia <br>";
-                        }
-                        ?>
+                <div class="rounded-4 border colfiltro ">
+                    <div class="m-4 ">
+                        <div class="d-flex">
+                            <span class="titulo">Filtre sua busca</span>
+                            <button class="btnLimpar">Limpar</button>
+                        </div>
+                        <div id="arrayItens">
+                            <h6 class="titulosCheckbox">Tecnologias</h6>
+                            <?php foreach ($tecnologias as $tecnologia) {
+                                echo "<input class='textCheckbox' type='checkbox' name='$tecnologia'> $tecnologia <br>";
+                            }
+                            ?>
+                            <button class="btnVerMais" id="verMais">Ver mais...</button>
+                        </div>
                         <h6 class="titulosCheckbox">Tipo de vaga</h6>
                         <?php foreach ($tVagas as $vagaTipo) {
                             echo "<input class='textCheckbox' type='checkbox' name='$vagaTipo'> $vagaTipo <br>";
@@ -161,25 +167,24 @@ for ($i = 0; $i < 4; $i++) {
             </div>
         </div>
     </section>
-    <footer class="color">
+    <footer class="corHeader">
         <div class="container mt-4">
             <div class="row pt-5 pb-5">
                 <div class="col-sm-4">
                     <img src="./src/img/Logotipo.png" alt="" />
                 </div>
                 <div class="col-sm-4 info">
-                    <!-- info -->
                     <h6 class="colortitle">Contato e Endereço</h6>
-                    <div class="divPai">
-                        <div class="opatest"><i class="ri-phone-line iconContatos "></i></div>
+                    <div class="d-flex">
+                        <div class="iconPadrao"><i class="ri-phone-line iconContatos "></i></div>
                         <p class="textContatos">4003-5442</p>
                     </div>
-                    <div class="divPai">
-                        <div class="opatest"><i class="ri-mail-line iconContatos"></i></div>
+                    <div class="d-flex">
+                        <div class="iconPadrao"><i class="ri-mail-line iconContatos"></i></div>
                         <p class="textContatos">contato@arnia.com.br</p>
                     </div>
-                    <div class="divPai">
-                        <div class="opatest2"><i class="ri-map-pin-line iconContatos"></i></div>
+                    <div class="d-flex">
+                        <div class="btnLocaliza"><i class="ri-map-pin-line iconContatos"></i></div>
                         <p class="textContatos">Av. do Contorno, 2905 Santa Efigênia, Belo Horizonte - MG,
                             30110-080</p>
                     </div>
