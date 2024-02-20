@@ -10,8 +10,21 @@ $vagas = array();
 for ($i = 0; $i < 4; $i++) {
     $vagas[] = new VAGAS("Desenvolvedor de Sistemas Pleno", "Empresa: iZap Softworks", "InfoJobs 04 ago", "PHP", "Phyton", "React", "Faixa salarial: R$ 4.000,00", "Localização: Belo Horizonte", "Tipo de vaga: Home office", "Oferecemos um ambiente em que todos são protagonistas e agentes de transformação. Temos um excelente clima organizacional com pessoas engajadas em entregar os melhores resultados, assim como grandes oportunidades...");
 }
-?>
+$nomeEscrito = isset($_REQUEST['linguagem']) ? $_REQUEST['linguagem'] : '';
 
+$itensinicio = 8;
+$display = $itensinicio;
+
+function mostraMais()
+{
+    global $display;
+    global $itensinicio;
+    $display +=  $itensinicio;
+}
+$displayTecnologias = array_slice($tecnologias, 0, $display);
+$displayTecnologiaslast = array_slice($tecnologias, $display, sizeof($displayTecnologias) - 1);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +36,7 @@ for ($i = 0; $i < 4; $i++) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css" integrity="sha512-dUOcWaHA4sUKJgO7lxAQ0ugZiWjiDraYNeNJeRKGOIpEq4vroj1DpKcS3jP0K4Js4v6bXk31AAxAxaYt3Oi9xw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Ania Vagas</title>
+    <title>Arnia Vagas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -57,7 +70,7 @@ for ($i = 0; $i < 4; $i++) {
                             <input class=" form-control mb-3 tamanhoInput distancia" type="text" name="linguagem" id="" placeholder="Linguagem">
 
                             <?php if (isset($_POST['linguagem'])) : ?>
-                                <span class=" btn mb-4 resultadoInput border-white "><?php echo $_POST['linguagem'] ?></span>
+                                <span class=" btn mb-4 resultadoInput resultado border-white "><?php echo $_POST['linguagem'] ?></span>
                             <?php endif; ?>
                         </div>
                         <div class="col-sm-4">
@@ -66,7 +79,7 @@ for ($i = 0; $i < 4; $i++) {
                             <input class="form-control tamanhoInput distancia" type="text" name="localizacao" id="" placeholder="Localização">
                         </div>
                         <!-- mt-4 w-25 h-25 -->
-                        <button class=" btn botao mt-4 botaoBusca ">Buscar Vagas</button>
+                        <button onclick="checked()" class=" btn botao mt-4 botaoBusca ">Buscar Vagas</button>
 
                     </div>
 
@@ -89,11 +102,21 @@ for ($i = 0; $i < 4; $i++) {
                         </div>
                         <div id="arrayItens">
                             <h6 class="titulosCheckbox">Tecnologias</h6>
-                            <?php foreach ($tecnologias as $tecnologia) {
-                                echo "<input class='textCheckbox' type='checkbox' name='$tecnologia'> $tecnologia <br>";
+                            <?php foreach ($displayTecnologias as $tecnologia) {
+                                echo "<input class='textCheckbox' type='checkbox' name='$nomeEscrito' " . (($nomeEscrito == $tecnologia) ? 'checked' : '') . "> $tecnologia <br>";
                             }
                             ?>
-                            <button class="btnVerMais" id="verMais">Ver mais...</button>
+
+                            <div class="accordion">
+                                <button class="btnVerMais">Ver mais...</button>
+                                <div class="accordion-content">
+                                    <?php foreach ($displayTecnologiaslast as $tecnologia) {
+                                        echo "<input class='textCheckbox' type='checkbox' name='$nomeEscrito' " . (($nomeEscrito == $tecnologia) ? 'checked' : '') . "> $tecnologia <br>";
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+
                         </div>
                         <h6 class="titulosCheckbox">Tipo de vaga</h6>
                         <?php foreach ($tVagas as $vagaTipo) {
@@ -200,6 +223,9 @@ for ($i = 0; $i < 4; $i++) {
             </div>
         </div>
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

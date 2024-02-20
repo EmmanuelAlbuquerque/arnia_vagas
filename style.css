@@ -281,3 +281,27 @@ label {
 	border-radius: 50px;
 	background-color: #fbb04d;
 }
+
+.accordion-content {
+	display: none;
+}
+
+.accordion-btn {
+	background-color: #f1f1f1;
+	color: #333;
+	cursor: pointer;
+	padding: 10px;
+	width: 100%;
+	text-align: left;
+	border: none;
+	outline: none;
+	transition: 0.4s;
+}
+
+.accordion-btn.active {
+	background-color: #ddd;
+}
+
+.accordion-content.show {
+	display: block;
+}
